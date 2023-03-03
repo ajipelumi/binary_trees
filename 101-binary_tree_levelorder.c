@@ -14,8 +14,8 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	binary_tree_t **queue = NULL;
 	int head, tail, size, i;
 
-	/* tree or function to be called is not NULL */
-	if (tree != NULL && func != NULL)
+	/* if tree or function to be called is NULL */
+	if (tree == NULL && func == NULL)
 	{
 		return;
 	}
