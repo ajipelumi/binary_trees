@@ -19,15 +19,15 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node)
 	}
 
 	/* determine which child of the parent node was passed */
-    if (node->parent->left == node)
+	if (node->parent->left == node)
 	{
-        sibling = node->parent->right; /* get sibling */
+		sibling = node->parent->right; /* get sibling */
 	}
 
-    else
+	else
 	{
-        sibling = node->parent->left; /* get sibling */
+		sibling = node->parent->left; /* get sibling */
 	}
 
-    return (sibling); /* return sibling */
+	return (sibling); /* return sibling */
 }
