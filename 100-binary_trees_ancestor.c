@@ -49,7 +49,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 }
 
 /**
- * binary_tree_depth - measures the depth of a binary tree
+ * tree_depth - measures the depth of a binary tree
  *
  * @tree: a pointer to the root node of the tree to measure the depth
  *
