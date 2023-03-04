@@ -29,7 +29,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 			if (queue[i]->left) /* check if a left child exists */
 			{
 				if (flag == 1) /* implies that the right of the prev node is not full */
+				{
+					free(queue);
 					return (0);
+				}
 				queue[tail] = queue[i]->left; /* last item in queue now points to left */
 				tail++; /* tail increases */
 			}
@@ -38,7 +41,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 			if (queue[i]->right) /* check if a right child exists */
 			{
 				if (flag == 1) /* implies that the left of the prev node is not full */
+				{
+					free(queue);
 					return (0);
+				}
 				queue[tail] = queue[i]->right; /* last item in queue now points to right */
 				tail++; /* tail increases */
 			}
