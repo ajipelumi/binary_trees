@@ -10,15 +10,15 @@
 
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-	binary_tree_t **queue = malloc(sizeof(*queue) * 1024);
+	binary_tree_t **queue = NULL;
 	int head = 0, tail = 0, size = 0, flag = 0, i;
 
 	if (tree == NULL) /* if tree is NULL */
 		return (0);
+	queue = malloc(sizeof(*queue) * 1024); /* create queue to store tree items */
 	if (queue == NULL) /* malloc fails */
 		return (0);
-	queue[0] = (binary_tree_t *) tree; /* add root node to queue */
-	tail = size = 1; /* tail and size increases by 1 */
+	queue[0] = (binary_tree_t *) tree, tail = size = 1;
 	while (head < size) /* iterate over queue */
 	{
 		for (i = head; i < size; i++)
