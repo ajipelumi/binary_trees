@@ -10,16 +10,13 @@
 
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-	binary_tree_t **queue = NULL;
+	binary_tree_t **queue = malloc(sizeof(*queue) * 1024);
 	int head = 0, tail = 0, size = 0, flag = 0, i;
 
 	if (tree == NULL) /* if tree is NULL */
 		return (0);
-
-	queue = malloc(sizeof(*queue) * 1024); /* create queue to store tree items */
 	if (queue == NULL) /* malloc fails */
 		return (0);
-
 	queue[0] = (binary_tree_t *) tree; /* add root node to queue */
 	tail = size = 1; /* tail and size increases by 1 */
 	while (head < size) /* iterate over queue */
@@ -33,8 +30,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 					free(queue);
 					return (0);
 				}
-				queue[tail] = queue[i]->left; /* last item in queue now points to left */
-				tail++; /* tail increases */
+				queue[tail++] = queue[i]->left; /* last item now points to left */
 			}
 			else /* no left child */
 				flag = 1;
@@ -45,14 +41,12 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 					free(queue);
 					return (0);
 				}
-				queue[tail] = queue[i]->right; /* last item in queue now points to right */
-				tail++; /* tail increases */
+				queue[tail++] = queue[i]->right; /* last item now points to right */
 			}
 			else /* no right child */
 				flag = 1;
 		}
-		head = size;
-		size = tail;
+		head = size, size = tail;
 	}
 	free(queue); /* free queue */
 	return (flag); /* return flag */
