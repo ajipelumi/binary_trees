@@ -20,7 +20,7 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 
 	/* get new root */
 	new_root = tree->right;
-	/* previous root left now points to new root left */
+	/* previous root right now points to new root left */
 	tree->right = new_root->left;
 
 	/* if new root left */
