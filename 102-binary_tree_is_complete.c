@@ -15,7 +15,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	if (tree == NULL) /* if tree is NULL */
 		return (0);
-
 	queue = malloc(sizeof(*queue) * 1024); /* create queue to store tree items */
 	if (queue == NULL) /* malloc fails */
 		return (0);
@@ -24,6 +23,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	tail = size = 1; /* tail and size increases by 1 */
 	while (head < size) /* iterate over queue */
 	{
+		flag = 0; /* reset flag */
 		for (i = head; i < size; i++)
 		{
 			if (queue[i]->left) /* check if a left child exists */
