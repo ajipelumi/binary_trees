@@ -32,6 +32,7 @@ bst_t *bst_remove(bst_t *root, int value)
 		if (root->left == NULL && root->right == NULL) /* value has no child */
 		{
 			free(root); /* free root */
+			root = NULL; /* root is a dangling pointer so set it to null */
 		}
 		else if (root->left == NULL) /* value has no left child */
 		{
@@ -71,7 +72,7 @@ bst_t *min_value(bst_t *tree)
 		return (NULL);
 	}
 
-	while (tree->left)
+	while (tree->left) /* loop through left side */
 	{
 		tree = tree->left; /* go to left most node */
 	}
