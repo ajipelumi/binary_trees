@@ -37,18 +37,24 @@ bst_t *bst_remove(bst_t *root, int value)
 		else if (root->left == NULL) /* value has no left child */
 		{
 			temp = root;
+			root->right->parent = root->parent;
 			root = root->right;
 			free(temp);
 		}
 		else if (root->right == NULL) /* value has no right child */
 		{
 			temp = root;
+			root->left->parent = root->parent;
 			root = root->left;
 			free(temp);
 		}
 		else /* value has both left and right children */
 		{
 			node = min_value(root->right); /* get the in order successor */
+			if (node == NULL)
+			{
+				return (root);
+			}
 			root->n = node->n; /* replace predecessor with successor */
 			root->right = bst_remove(root->right, node->n); /* delete successor */
 		}
